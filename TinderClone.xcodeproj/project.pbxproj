@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8763C3F229A78DA6007A51CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C3F129A78DA6007A51CE /* AppDelegate.swift */; };
 		8763C3F429A78DA6007A51CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C3F329A78DA6007A51CE /* SceneDelegate.swift */; };
-		8763C3F629A78DA6007A51CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C3F529A78DA6007A51CE /* ViewController.swift */; };
+		8763C3F629A78DA6007A51CE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C3F529A78DA6007A51CE /* HomeController.swift */; };
 		8763C3F929A78DA6007A51CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8763C3F729A78DA6007A51CE /* Main.storyboard */; };
 		8763C3FC29A78DA6007A51CE /* TinderClone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8763C3FA29A78DA6007A51CE /* TinderClone.xcdatamodeld */; };
 		8763C3FE29A78DB4007A51CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8763C3FD29A78DB4007A51CE /* Assets.xcassets */; };
@@ -17,13 +17,17 @@
 		8763C40A29A7A7E2007A51CE /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C40929A7A7E2007A51CE /* Extensions+UIView.swift */; };
 		8763C40D29AAA065007A51CE /* HomeControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C40C29AAA065007A51CE /* HomeControlsStackView.swift */; };
 		8763C40F29AAA9DC007A51CE /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C40E29AAA9DC007A51CE /* TopNavigationStackView.swift */; };
+		8763C41129AAC1A2007A51CE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C41029AAC1A2007A51CE /* CardView.swift */; };
+		8763C41429ABA780007A51CE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C41329ABA780007A51CE /* User.swift */; };
+		8763C41829ABB45F007A51CE /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C41729ABB45F007A51CE /* CardViewModel.swift */; };
+		8763C41A29ABC278007A51CE /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C41929ABC278007A51CE /* Advertiser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8763C3EE29A78DA6007A51CE /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8763C3F129A78DA6007A51CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8763C3F329A78DA6007A51CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8763C3F529A78DA6007A51CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8763C3F529A78DA6007A51CE /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8763C3F829A78DA6007A51CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8763C3FB29A78DA6007A51CE /* TinderClone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinderClone.xcdatamodel; sourceTree = "<group>"; };
 		8763C3FD29A78DB4007A51CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +36,10 @@
 		8763C40929A7A7E2007A51CE /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		8763C40C29AAA065007A51CE /* HomeControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControlsStackView.swift; sourceTree = "<group>"; };
 		8763C40E29AAA9DC007A51CE /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
+		8763C41029AAC1A2007A51CE /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		8763C41329ABA780007A51CE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8763C41729ABB45F007A51CE /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		8763C41929ABC278007A51CE /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +72,13 @@
 		8763C3F029A78DA6007A51CE /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
+				8763C41629ABB432007A51CE /* ViewModels */,
+				8763C41229AB89DE007A51CE /* Model */,
 				8763C40B29AA91B2007A51CE /* Views */,
+				8763C41529ABB34B007A51CE /* Controllers */,
 				8763C40829A79CF5007A51CE /* Extensions */,
 				8763C3F129A78DA6007A51CE /* AppDelegate.swift */,
 				8763C3F329A78DA6007A51CE /* SceneDelegate.swift */,
-				8763C3F529A78DA6007A51CE /* ViewController.swift */,
 				8763C3F729A78DA6007A51CE /* Main.storyboard */,
 				8763C3FD29A78DB4007A51CE /* Assets.xcassets */,
 				8763C3FF29A78DB4007A51CE /* LaunchScreen.storyboard */,
@@ -91,8 +101,34 @@
 			children = (
 				8763C40C29AAA065007A51CE /* HomeControlsStackView.swift */,
 				8763C40E29AAA9DC007A51CE /* TopNavigationStackView.swift */,
+				8763C41029AAC1A2007A51CE /* CardView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8763C41229AB89DE007A51CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8763C41329ABA780007A51CE /* User.swift */,
+				8763C41929ABC278007A51CE /* Advertiser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8763C41529ABB34B007A51CE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8763C3F529A78DA6007A51CE /* HomeController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8763C41629ABB432007A51CE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8763C41729ABB45F007A51CE /* CardViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,11 +203,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8763C40D29AAA065007A51CE /* HomeControlsStackView.swift in Sources */,
-				8763C3F629A78DA6007A51CE /* ViewController.swift in Sources */,
+				8763C3F629A78DA6007A51CE /* HomeController.swift in Sources */,
+				8763C41A29ABC278007A51CE /* Advertiser.swift in Sources */,
 				8763C3F229A78DA6007A51CE /* AppDelegate.swift in Sources */,
 				8763C40F29AAA9DC007A51CE /* TopNavigationStackView.swift in Sources */,
+				8763C41829ABB45F007A51CE /* CardViewModel.swift in Sources */,
 				8763C3F429A78DA6007A51CE /* SceneDelegate.swift in Sources */,
+				8763C41429ABA780007A51CE /* User.swift in Sources */,
 				8763C3FC29A78DA6007A51CE /* TinderClone.xcdatamodeld in Sources */,
+				8763C41129AAC1A2007A51CE /* CardView.swift in Sources */,
 				8763C40A29A7A7E2007A51CE /* Extensions+UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
