@@ -30,9 +30,16 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLayout()
+        topStackView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
         
+        setupLayout()
         setupDummyCards()
+    }
+    
+    @objc fileprivate func handleSettings(){
+        let registrationController = RegistrationController()
+        registrationController.modalPresentationStyle = .fullScreen
+        present(registrationController, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
