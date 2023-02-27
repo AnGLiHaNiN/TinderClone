@@ -23,6 +23,7 @@
 		8763C41A29ABC278007A51CE /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C41929ABC278007A51CE /* Advertiser.swift */; };
 		8763C41C29AC0E5D007A51CE /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C41B29AC0E5D007A51CE /* RegistrationController.swift */; };
 		8763C41E29AC2BE1007A51CE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C41D29AC2BE0007A51CE /* CustomTextField.swift */; };
+		8763C44029AD3DDA007A51CE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8763C43F29AD3DDA007A51CE /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		8763C41929ABC278007A51CE /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		8763C41B29AC0E5D007A51CE /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		8763C41D29AC2BE0007A51CE /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		8763C43F29AD3DDA007A51CE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			children = (
 				8763C3F529A78DA6007A51CE /* HomeController.swift */,
 				8763C41B29AC0E5D007A51CE /* RegistrationController.swift */,
+				8763C43F29AD3DDA007A51CE /* RegistrationViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				8763C41E29AC2BE1007A51CE /* CustomTextField.swift in Sources */,
 				8763C40D29AAA065007A51CE /* HomeControlsStackView.swift in Sources */,
 				8763C3F629A78DA6007A51CE /* HomeController.swift in Sources */,
+				8763C44029AD3DDA007A51CE /* RegistrationViewModel.swift in Sources */,
 				8763C41A29ABC278007A51CE /* Advertiser.swift in Sources */,
 				8763C3F229A78DA6007A51CE /* AppDelegate.swift in Sources */,
 				8763C40F29AAA9DC007A51CE /* TopNavigationStackView.swift in Sources */,
