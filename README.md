@@ -1,1 +1,1 @@
-# TitnderClone
+# TinderClone
