@@ -7,13 +7,16 @@
 
 import UIKit
 
+
 class CardView: UIView {
     
     var cardViewModel: CardViewModel! {
         didSet {
             let imageName = cardViewModel.imageNames.first ?? "" 
             imageView.image = UIImage(named: imageName)
-            informationLable.attributedText = cardViewModel.attributedString
+//            informationLable.attributedText = cardViewModel.attributedString
+            
+            
             informationLable.textAlignment = cardViewModel.textAligment
             
             (0..<cardViewModel.imageNames.count).forEach { (_) in
@@ -90,13 +93,11 @@ class CardView: UIView {
         clipsToBounds = true
         
         
-        
         imageView.contentMode = .scaleAspectFill
         addSubview(imageView)
         imageView.fillSuperview()
         
         setupBarsStackView()
-        //add a gradient layar
         setupGradientLayer()
         
         addSubview(informationLable)
@@ -112,9 +113,6 @@ class CardView: UIView {
         barsStackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top:  8, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 4))
         barsStackView.spacing = 4
         barsStackView.distribution = .fillEqually
-        
-
-        
     }
     
     fileprivate func setupGradientLayer(){
@@ -160,7 +158,9 @@ class CardView: UIView {
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             if shouldDismissCard {
-                self.frame = CGRect(x: 1000 * translationDirection, y: 0, width: self.frame.width, height: self.frame.height)
+                //self.frame = CGRect(x: 1000 * translationDirection, y: 0, width: self.frame.width, height: self.frame.height)
+                let offScreanTransform = self.transform.translatedBy(x: 1000 * translationDirection, y: 0)
+                self.transform = offScreanTransform
             } else {
                 self.transform = .identity
             }
