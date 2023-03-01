@@ -6,17 +6,19 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 class CardView: UIView {
     
     var cardViewModel: CardViewModel! {
         didSet {
             let imageName = cardViewModel.imageNames.first ?? "" 
-            imageView.image = UIImage(named: imageName)
-//            informationLable.attributedText = cardViewModel.attributedString
+            //imageView.image = UIImage(named: imageName)
+            if let url = URL(string: imageName){
+                imageView.sd_setImage(with: url)
+            }
             
-            
+            informationLable.attributedText = cardViewModel.attributedString
             informationLable.textAlignment = cardViewModel.textAligment
             
             (0..<cardViewModel.imageNames.count).forEach { (_) in
@@ -31,8 +33,10 @@ class CardView: UIView {
     }
     
     fileprivate func setupIndexImageObserver(){
-        cardViewModel.imageIndexObserver = { [weak self] (idx, image) in
-            self?.imageView.image = image
+        cardViewModel.imageIndexObserver = { [weak self] (idx, imageUrl) in
+            if let url = URL(string: imageUrl ?? ""){
+                self?.imageView.sd_setImage(with: url)
+            }
             
             self?.barsStackView.arrangedSubviews.forEach { (v) in
                 v.backgroundColor = self?.barDeselectedColor
@@ -72,19 +76,6 @@ class CardView: UIView {
         } else {
             cardViewModel.goToPreviousPhoto()
         }
-        
-//        if shouldAdvanceNextPhoto{
-//            imageIndex = min(imageIndex + 1, cardViewModel.imageNames.count - 1)
-//        } else{
-//            imageIndex = max(imageIndex - 1, 0)
-//        }
-//
-//        let imageName = cardViewModel.imageNames[imageIndex]
-//        barsStackView.arrangedSubviews.forEach { (v) in
-//            v.backgroundColor = barDeselectedColor
-//        }
-//        barsStackView.arrangedSubviews[imageIndex].backgroundColor = .white
-//        imageView.image = UIImage(named: imageName)
     }
     
     fileprivate func setupLayout() {

@@ -11,26 +11,32 @@ import UIKit
 
 struct User: ProducesCardViewModel{
     
-    let name: String
-    let age: Int
-    let profession: String
-    let imageNames: [String]
+    var name: String?
+    var age: Int?
+    var profession: String?
+//  let imageNames: [String]
+    var imageURL1: String?
+    var uid: String?
+    
     
     init(dictionary: [String: Any]){
-        let name = dictionary["fullName"] as? String ?? ""
-        self.age = 0
-        self.profession = "Jobless"
-        self.name = name
-        let imageUrl1 = dictionary["imageUrl1"] as? String ?? ""
-        self.imageNames = [imageUrl1]
+        self.age = dictionary["age"] as? Int
+        self.profession = dictionary["profession"] as? String
+        self.name = dictionary["fullName"] as? String ?? ""
+        self.imageURL1 = dictionary["imageUrl1"] as? String ?? ""
+        self.uid = dictionary["uid"] as? String ?? ""
     }
     
     func toCardViewModel() -> CardViewModel{
-        let attribetedText = NSMutableAttributedString(string: name, attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
-        attribetedText.append(NSAttributedString(string: " \(age)", attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]))
-        attribetedText.append(NSAttributedString(string: "\n\(profession)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
+        let attribetedText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
         
-        return CardViewModel(imageNames: imageNames, attributedString: attribetedText, textAligment: .left)
+        let ageString = age != nil ? "\(age!)" : "N\\A"
+        attribetedText.append(NSAttributedString(string: " \(ageString)", attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]))
+        
+        let professionalString = profession != nil ? profession! : "Not available"
+        attribetedText.append(NSAttributedString(string: "\n\(professionalString)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
+        
+        return CardViewModel(imageNames: [imageURL1 ?? ""], attributedString: attribetedText, textAligment: .left)
     }
     
     
