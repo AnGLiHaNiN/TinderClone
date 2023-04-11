@@ -12,13 +12,21 @@ import FirebaseStorage
 import JGProgressHUD
 import SDWebImage
 
+
+protocol SettingsControllerDelegate{
+    func didSaveSattings()
+}
+
+
+
 class CustomImagePickerController: UIImagePickerController{
     var imageButton: UIButton?
-    
     }
 
 class SettingsController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
+    
+    var delegate: SettingsControllerDelegate?
     
     lazy var image1button = createButton(selector: #selector(handleSelectPhoto))
     lazy var image2button = createButton(selector: #selector(handleSelectPhoto))
@@ -96,7 +104,6 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         tableView.tableFooterView = UIView()
         tableView.keyboardDismissMode = .interactive
-        
         fetchCurrentUser()
     }
     
@@ -146,10 +153,16 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(hadleCancel))
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(hadleSave)),
-            UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(hadleCancel))
+            UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(hadleLogout))
         ]
     }
     
+    @objc fileprivate func hadleLogout(){
+        
+        try? Auth.auth().signOut()
+        
+        dismiss(animated: true)
+    }
     
     @objc fileprivate func hadleSave(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
@@ -176,6 +189,11 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
                 return
             }
             print("Finished saving user info")
+            self.dismiss(animated: true) {
+                print("Dismiss complete")
+            }
+            self.delegate?.didSaveSattings()
+            //HomeController.fetchCurrentUser() хотим реализовать
         }
     }
 
@@ -276,15 +294,25 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         self.user?.maxSeekingAge = Int(slider.value)
     }
     
+    
+    static let minDefaultAge = 18
+    static let maxDefaultAge = 50
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SettingsCell(style: .default, reuseIdentifier: nil)
-        
         if indexPath.section == 5{
             let ageRangeCell = AgeRangeCell(style: .default, reuseIdentifier: nil)
             ageRangeCell.minSlider.addTarget(self, action: #selector(handleMinAgeChange), for: .valueChanged)
             ageRangeCell.maxSlider.addTarget(self, action: #selector(handleMaxAgeChange), for: .valueChanged)
-            ageRangeCell.minLable.text = "Min \(user?.minSeekingAge ?? -1)"
-            ageRangeCell.maxLable.text = "Max \(user?.maxSeekingAge ?? -1)"
+            
+            let minAge = user?.minSeekingAge ?? SettingsController.minDefaultAge
+            let maxAge = user?.maxSeekingAge ?? SettingsController.maxDefaultAge
+            
+            ageRangeCell.minLable.text = "Min \(minAge)"
+            ageRangeCell.maxLable.text = "Max \(maxAge)"
+            ageRangeCell.minSlider.value = Float(minAge)
+            ageRangeCell.maxSlider.value = Float(maxAge)
             return ageRangeCell
         }
         

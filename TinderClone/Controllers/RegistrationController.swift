@@ -18,8 +18,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         self.selectPhotoButton.imageView?.image = image
         
         registrationViewModel.bindableImage.value = image
-        //registrationViewModel.image = image
-        
+        registrationViewModel.checkFormValidity()
         self.dismiss(animated: true)
     }
     
@@ -237,14 +236,30 @@ class RegistrationController: UIViewController{
         }
     }
     
+    let goToLoginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Go to Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+        button.addTarget(self, action: #selector(handleGoToLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc fileprivate func handleGoToLogin(){
+        let loginController = LoginController()
+        navigationController?.popViewController(animated: true)
+    }
+    
     fileprivate func setupLayout() {
-        
         view.addSubview(overalStackView)
         overalStackView.axis = .vertical
         selectPhotoButton.widthAnchor.constraint(equalToConstant: 275).isActive = true
         overalStackView.spacing = 8
         overalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50 ))
         overalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        view.addSubview(goToLoginButton)
+        goToLoginButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
     }
     
     let gradientLayer = CAGradientLayer()
